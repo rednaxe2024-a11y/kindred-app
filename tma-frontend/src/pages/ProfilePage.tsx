@@ -128,6 +128,16 @@ export function ProfilePage() {
           >
             Сохранить
           </button>
+
+          {/* Find Partner Button */}
+          <button
+            type="button"
+            onClick={() => navigate('/matching')}
+            className="w-full py-4 px-6 font-semibold rounded-xl shadow-md transition-all bg-gradient-to-r from-pink-500 to-red-500 text-white hover:opacity-90 flex items-center justify-center gap-2"
+          >
+            <span>❤️</span>
+            <span>Искать партнера</span>
+          </button>
         </form>
       </div>
     </div>
