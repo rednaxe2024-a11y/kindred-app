@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 type Role = 'mom' | 'dad' | null
 
@@ -18,7 +19,7 @@ export function ProfilePage() {
     
     // TODO: Сохранить профиль в Zustand store и отправить на backend
     console.log('Profile saved:', { role, name, age, city })
-    alert('Профиль сохранён!')
+    toast.success('Профиль успешно сохранён!')
   }
 
   return (

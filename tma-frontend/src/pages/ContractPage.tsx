@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 const currencies = ['USD', 'EUR', 'RUB', 'TON']
 
@@ -52,15 +53,46 @@ export function ContractPage() {
 
       console.log('Contract JSON:', JSON.stringify(contract, null, 2))
       
-      alert(
-        `✅ Контракт создан!\n\n` +
-        `ID: ${contract.metadata.contractId}\n` +
-        `Сумма: ${monthlyAmount} ${currency}/мес\n\n` +
-        `В реальном приложении:\n` +
-        `1. JSON будет канонизирован\n` +
-        `2. Загружен в IPFS/TON Storage\n` +
-        `3. Хэш записан в блокчейн TON`
-      )
+      // Кастомный красивый тост
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } max-w-md w-full bg-white shadow-2xl rounded-2xl pointer-events-auto flex overflow-hidden`}
+        >
+          {/* Green accent bar */}
+          <div className="w-2 bg-gradient-to-b from-green-400 to-green-600" />
+          
+          <div className="flex-1 p-4">
+            <div className="flex items-start gap-3">
+              {/* Checkmark icon */}
+              <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <span className="text-green-600 text-xl">✓</span>
+              </div>
+              
+              <div className="flex-1 min-w-0">
+                <p className="text-base font-semibold text-gray-900">
+                  Контракт создан!
+                </p>
+                <p className="mt-1 text-sm text-gray-500 truncate">
+                  ID: {contract.metadata.contractId}
+                </p>
+                <p className="text-sm text-gray-500">
+                  Сумма: {monthlyAmount} {currency}/мес
+                </p>
+              </div>
+              
+              {/* Close button */}
+              <button
+                onClick={() => toast.dismiss(t.id)}
+                className="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        </div>
+      ), { duration: 5000 })
 
       navigate(-1)
     }, 2000)
