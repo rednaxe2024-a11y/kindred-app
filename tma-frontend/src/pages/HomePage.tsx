@@ -1,5 +1,6 @@
 import { TonConnectButton } from '@tonconnect/ui-react'
 import { useNavigate } from 'react-router-dom'
+import kindredLogo from '../assets/kindred-logo.jpg'
 
 export function HomePage() {
   const navigate = useNavigate()
@@ -8,14 +9,13 @@ export function HomePage() {
     <div className="min-h-screen bg-tg-bg text-tg-text flex flex-col items-center justify-center p-6">
       <div className="text-center space-y-6 max-w-md">
         {/* Logo */}
-        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-lg">
-          <span className="text-4xl">💜</span>
+        <div className="w-32 h-32 mx-auto rounded-full overflow-hidden shadow-2xl ring-4 ring-white/20">
+          <img 
+            src={kindredLogo} 
+            alt="Kindred Logo" 
+            className="w-full h-full object-cover"
+          />
         </div>
-        
-        {/* Title */}
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-          Kindred
-        </h1>
 
         {/* TON Connect Button */}
         <div className="flex justify-center">
