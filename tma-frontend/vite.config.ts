@@ -10,7 +10,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['vite.svg', 'icons/*.png'],
+      includeAssets: ['logo-icon.jpg'],
       manifest: {
         name: 'Kindred',
         short_name: 'Kindred',
@@ -23,16 +23,16 @@ export default defineConfig({
         orientation: 'portrait',
         icons: [
           {
-            src: '/icons/icon-192x192.svg',
+            src: '/logo-icon.jpg',
             sizes: '192x192',
-            type: 'image/svg+xml',
-            purpose: 'any',
+            type: 'image/jpeg',
+            purpose: 'any maskable',
           },
           {
-            src: '/icons/icon-512x512.svg',
+            src: '/logo-icon.jpg',
             sizes: '512x512',
-            type: 'image/svg+xml',
-            purpose: 'any',
+            type: 'image/jpeg',
+            purpose: 'any maskable',
           },
         ],
       },
